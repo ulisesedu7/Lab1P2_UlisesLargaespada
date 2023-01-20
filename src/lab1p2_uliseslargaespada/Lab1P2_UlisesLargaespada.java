@@ -170,19 +170,19 @@ public class Lab1P2_UlisesLargaespada {
     
     double limite = entry.nextDouble();
     
-    System.out.println("El total de pi en esa sumatoria es: " + sumatoriaFinal(limite));    
+    System.out.println("El total de pi en esa sumatoria es: " + sumatoriaFinal(limite, 0));    
     System.out.println();
   }
   
   // Funcion para realizar la sumatoria
-  public static double sumatoriaFinal(double k) {
-    double total = 0;
-    if(k == 1) {
-      total += (4*(-1/(2+1)));
-      return total;
-    } else {
-      total += sumatoriaFinal(k-1);
+  public static double sumatoriaFinal(double k, double totalF) {
+    double total = totalF;
+    if (k == 1) {      
+      total += 4*((Math.pow(-1, k)/(2*k + 1)));
     }
+    else if(k > 1) {
+      total += sumatoriaFinal(k-1, total);
+    } 
     return total;
   }
 }
